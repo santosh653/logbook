@@ -26,15 +26,11 @@ addons:
 services:
 - redis-server
 python:
-- '2.7'
+- '2.7
 - '3.5'
 - '3.6'
 - '3.7'
-#Excluding python2.7 on power
-jobs:
- exclude:
-  - python: '2.7'
-    arch: ppc64le
+- '3.8'
     
 before_install:
   - pip install coveralls
@@ -60,6 +56,12 @@ matrix:
   - python: "2.7"
     env: GEVENT=True CYBUILD=True
     arch: amd64
+  - python: "3.6"
+    env: GEVENT=True CYBUILD=True
+    arch: ppc64le
+  - python: "2.7"
+    env: GEVENT=True CYBUILD=True
+    arch: ppc64le
   
   
 after_success:
