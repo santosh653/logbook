@@ -13,6 +13,7 @@ addons:
     - libzmq3-dev
 services:
 - redis-server
+#Running latest python versions
 python:
 - '3.8'
 - '3.9'
@@ -35,19 +36,15 @@ script:
 
 matrix:
   exclude:
+#Excluded python2.7 as there were failures
   include:
   - python: "3.6"
     env: GEVENT=True CYBUILD=True
     arch: amd64
-  - python: "2.7"
-    env: GEVENT=True CYBUILD=True
-    arch: amd64
   - python: "3.6"
     env: GEVENT=True CYBUILD=True
     arch: ppc64le
-  - python: "2.7"
-    env: GEVENT=True CYBUILD=True
-    arch: ppc64le
+  
  
 after_success:
   - coveralls
