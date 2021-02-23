@@ -1,18 +1,6 @@
-# ----------------------------------------------------------------------------
-#
-# Package             : logbook
-# Source Repo         : https://github.com/getlogbook/logbook.git
-# Travis Job Link     : https://travis-ci.com/github/santosh653/logbook
-# Created travis.yml  : No
-# Maintainer          : Santosh Kulkarni <santoshkulkarni70@gmail.com>
-#
-# Script License      : Apache License, Version 2 or later
-#
-# ----------------------------------------------------------------------------
 arch:
- - amd64
- - ppc64le
- 
+- amd64
+- ppc64le
 language: python
 dist: xenial
 addons:
@@ -26,12 +14,10 @@ addons:
 services:
 - redis-server
 python:
-- '2.7
+- '2.7'
 - '3.5'
 - '3.6'
 - '3.7'
-- '3.8'
-    
 before_install:
   - pip install coveralls
 install:
@@ -52,18 +38,9 @@ matrix:
   include:
   - python: "3.6"
     env: GEVENT=True CYBUILD=True
-    arch: amd64
   - python: "2.7"
     env: GEVENT=True CYBUILD=True
-    arch: amd64
-  - python: "3.6"
-    env: GEVENT=True CYBUILD=True
-    arch: ppc64le
-  - python: "2.7"
-    env: GEVENT=True CYBUILD=True
-    arch: ppc64le
-  
-  
+
 after_success:
   - coveralls
 
